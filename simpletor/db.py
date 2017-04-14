@@ -18,7 +18,7 @@ class Row(dict):
 
 import settings
 
-torcon = Connection(settings.db_host, settings.db_name, user=settings.db_user, password=settings.db_password)
+torcon = Connection(settings.db_host, settings.db_name, user=settings.db_user, password=settings.db_pass)
 
 def transactional(method):
     result = None

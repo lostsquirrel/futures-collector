@@ -6,7 +6,12 @@ Created on 2015年5月14日
 '''
 from simpletor import application
 
-@application.RequestMapping("/")
-class IndexHandler(application.RequestHandler):
+@application.RequestMapping("/data")
+class DataHandler(application.RequestHandler):
     def get(self):
-        self.render('index.html')
+        self.render('k_line_data.html')
+
+@application.RequestMapping("/item")
+class ItemHandler(application.RequestHandler):
+    def get(self):
+        self.render('k_line_edit.html')
