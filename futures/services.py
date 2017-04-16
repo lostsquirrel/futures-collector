@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from futures.models import itemDAO
 from futures.models import nodeDAO
-from simpletor.db import transactional
+from simpletor.torndb import transactional
 
 def get_items():
     return itemDAO.all()

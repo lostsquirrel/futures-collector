@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 
-from simpletor import db
+from simpletor import torndb
 
 
-class Node(db.Row):
+class Node(torndb.Row):
     '''
     Node
     '''
@@ -17,7 +17,7 @@ class Node(db.Row):
         self.date = None
 
 
-class Item(db.Row):
+class Item(torndb.Row):
     '''
     Node
     '''
@@ -31,7 +31,7 @@ class ItemDAO:
     ItemDAO DAO
     '''
 
-    @db.insert
+    @torndb.insert
     def save(self, **item):
         sql = '''
         INSERT INTO item (name) 
@@ -39,21 +39,21 @@ class ItemDAO:
         '''
         return sql
 
-    @db.get
+    @torndb.get
     def find(self, item_id):
         sql = '''
         SELECT id, name, status FROM item a WHERE a.id = %s;
         '''
         return sql
 
-    @db.get
+    @torndb.get
     def get_default_item(self,):
         sql = '''
         SELECT id, name, status FROM item a WHERE a.status = 1;
         '''
         return sql
 
-    @db.update
+    @torndb.update
     def update_name(self, **item):
         sql = '''
             UPDATE item a SET 
@@ -62,14 +62,14 @@ class ItemDAO:
             '''
         return sql
 
-    @db.delete
+    @torndb.delete
     def delete_item(self, item_id):
         sql = '''
         DELETE FROM item WHERE id = %s
         '''
         return sql
 
-    @db.update
+    @torndb.update
     def set_default(self, item_id):
         sql = '''
             UPDATE item a SET 
@@ -78,7 +78,7 @@ class ItemDAO:
             '''
         return sql
 
-    @db.update
+    @torndb.update
     def reset_default(self):
         sql = '''
         UPDATE item a SET 
@@ -87,7 +87,7 @@ class ItemDAO:
         '''
         return sql
 
-    @db.select
+    @torndb.select
     def all(self):
         sql = '''
             SELECT id, name, status FROM item;
@@ -99,7 +99,7 @@ itemDAO = ItemDAO()
 class NodeDAO:
 
 
-    @db.insert
+    @torndb.insert
     def save(self, **node):
         sql = '''
         INSERT INTO node (
@@ -122,28 +122,28 @@ class NodeDAO:
         '''
         return sql
 
-    @db.select
+    @torndb.select
     def all(self):
         sql = '''
-             SELECT id,
+             SELECT n.id,
                 open,
                 close,
                 lowest,
                 highest,
                 item_id,
                 date 
-                FROM node ORDER BY date ASC;
+                FROM node n JOIN item i ON n.item_id = i.id WHERE i.status = 1 ORDER BY date ASC;
              '''
         return sql
 
-    @db.delete
+    @torndb.delete
     def delete(self, node_id):
         sql = '''
         DELETE FROM node WHERE id = %s;
         '''
         return sql
 
-    @db.select
+    @torndb.select
     def find_node(self, **node):
         sql = '''
         SELECT 
@@ -158,7 +158,7 @@ class NodeDAO:
         '''
         return sql
 
-    @db.update
+    @torndb.update
     def update_node(self, **node):
         sql = '''
         UPDATE node 

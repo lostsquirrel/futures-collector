@@ -2,6 +2,7 @@
 import tornado
 from simpletor import application
 from futures import services
+from api import Api
 from futures.models import Item
 from futures.models import Node
 
@@ -16,6 +17,7 @@ class ItemsHandler(application.RequestHandler):
         items = services.get_items()
         self.render_json(items)
 
+    @Api(auth=True)
     def post(self, *args, **kwargs):
         params = tornado.escape.json_decode(self.request.body)
         item = Item()
@@ -23,12 +25,14 @@ class ItemsHandler(application.RequestHandler):
         services.save_item(item)
         self.render_json(SUCCESS_)
 
+    @Api(auth=True)
     def put(self):
         params = tornado.escape.json_decode(self.request.body)
         item_id = params['id']
         services.set_default(item_id)
         self.render_json(SUCCESS_)
 
+    @Api(auth=True)
     def delete(self, *args, **kwargs):
         params = tornado.escape.json_decode(self.request.body)
         item_id = params['id']
@@ -47,6 +51,7 @@ class NodeHandler(application.RequestHandler):
         nodes = services.get_nodes()
         self.render_json(nodes)
 
+    @Api(auth=True)
     def post(self, *args, **kwargs):
         params = tornado.escape.json_decode(self.request.body)
         node = Node()
@@ -55,9 +60,11 @@ class NodeHandler(application.RequestHandler):
         node.highest = params['highest']
         node.lowest = params['lowest']
         node.date = params['ndate']
+        node.item_id = params['item']
         services.save_node(node)
         self.render_json(SUCCESS_)
 
+    @Api(auth=True)
     def delete(self, *args, **kwargs):
         params = tornado.escape.json_decode(self.request.body)
         node_id = params['id']

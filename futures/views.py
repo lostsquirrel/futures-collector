@@ -15,3 +15,13 @@ class DataHandler(application.RequestHandler):
 class ItemHandler(application.RequestHandler):
     def get(self):
         self.render('k_line_edit.html')
+
+@application.RequestMapping("/chart")
+class ChartHandler(application.RequestHandler):
+    def get(self):
+        self.render('k_line_chart.html')
+
+@application.RequestMapping(r"/favicon.ico")
+class IconHandler(application.RequestHandler):
+    def get(self):
+        self.render('favicon.ico')

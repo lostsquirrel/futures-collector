@@ -16,6 +16,7 @@ $(function(){
 
     showItem();
     loadNodes();
+
 });
 
 
@@ -62,5 +63,10 @@ function showItem() {
             itemId = data.id
         }
         $('#itemName').html(itemName)
+
+        // addTestData();
     });
+}
+
+
 }

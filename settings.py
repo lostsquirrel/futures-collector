@@ -11,8 +11,9 @@ installed_apps = ['futures', 'api']
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 db_user = 'futures'
-db_pass = 'futures_pass'
+db_password = 'futures_pass'
 db_name = 'futures'
-db_host = '192.168.1.139:13301'
-
+# db_host = '192.168.1.139:13301'
+db_host = '192.168.19.66'
+pass_code = 'a'
 port = 8080
