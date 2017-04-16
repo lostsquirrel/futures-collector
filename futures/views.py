@@ -21,7 +21,7 @@ class ChartHandler(application.RequestHandler):
     def get(self):
         self.render('k_line_chart.html')
 
-@application.RequestMapping(r"/favicon.ico")
-class IconHandler(application.RequestHandler):
+@application.RequestMapping("/")
+class ChartHandler(application.RequestHandler):
     def get(self):
-        self.render('favicon.ico')
+        self.render('index.html')
