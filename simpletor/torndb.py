@@ -98,6 +98,7 @@ class Connection(object):
         self._db = None
         self._db_args = args
         self._last_use_time = time.time()
+        print self
         try:
             self.reconnect()
         except Exception:
