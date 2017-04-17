@@ -125,14 +125,14 @@ class NodeDAO:
     @torndb.select
     def all(self):
         sql = '''
-             SELECT n.id,
+             SELECT id,
                 open,
                 close,
                 lowest,
                 highest,
                 item_id,
                 date 
-                FROM node n JOIN item i ON n.item_id = i.id WHERE i.status = 1 ORDER BY date ASC;
+                FROM node WHERE item_id =  (SELECT id FROM item WHERE status = 1) ORDER BY date ASC;
              '''
         return sql
 

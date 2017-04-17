@@ -22,6 +22,6 @@ class ChartHandler(application.RequestHandler):
         self.render('k_line_chart.html')
 
 @application.RequestMapping("/")
-class ChartHandler(application.RequestHandler):
+class IndexHandler(application.RequestHandler):
     def get(self):
         self.render('index.html')
