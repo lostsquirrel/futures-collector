@@ -5,7 +5,8 @@ from futures import services
 from api import Api
 from futures.models import Item
 from futures.models import Node
-
+from evaluation.models import EvaluationData
+from evaluation import services as evaluationService
 SUCCESS_ = {"status": "success"}
 
 
@@ -69,4 +70,29 @@ class NodeHandler(application.RequestHandler):
         params = tornado.escape.json_decode(self.request.body)
         node_id = params['id']
         services.remove_node(node_id)
+        self.render_json(SUCCESS_)
+
+@application.RequestMapping("/api/evaluation/data")
+class EvaluationDataHandler(application.RequestHandler):
+    def get(self, *args, **kwargs):
+        dataList = evaluationService.get_all_data()
+        self.render_json(dataList)
+
+    def post(self, *args, **kwargs):
+        params = tornado.escape.json_decode(self.request.body)
+        # print type(params)
+        # print params['evaluation_score']
+        data = EvaluationData()
+        data.trade_date = params['trade_date']
+        data.position_time = params['position_time']
+        data.profit = params['profit']
+        data.commission = params['commission']
+        data.evaluation_score = params['evaluation_score']
+        evaluationService.save_data(data)
+        self.render_json(SUCCESS_)
+
+    def delete(self, *args, **kwargs):
+        params = tornado.escape.json_decode(self.request.body)
+        data_id = params['id']
+        evaluationService.remove_data(data_id)
         self.render_json(SUCCESS_)
