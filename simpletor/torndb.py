@@ -118,6 +118,7 @@ class Connection(object):
         """Closes the existing database connection and re-opens it."""
         self.close()
         self._db = MySQLdb.connect(**self._db_args)
+        self._db.ping(True)
         self._db.autocommit(False)
 
     def iter(self, query, *parameters, **kwparameters):
