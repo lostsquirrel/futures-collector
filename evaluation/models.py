@@ -4,7 +4,8 @@ from simpletor import torndb
 
 
 class EvaluationData(torndb.Row):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super(EvaluationData, self).__init__(**kwargs)
         self.id = None
         self.trade_date = None
         self.position_time = None
@@ -12,7 +13,10 @@ class EvaluationData(torndb.Row):
         self.commission = None
         self.evaluation_score = None
 
+
 class EvaluationDataDAO:
+    def __init__(self):
+        pass
 
     @torndb.insert
     def save(self, **data):
@@ -33,12 +37,16 @@ class EvaluationDataDAO:
         sql = '''
         SELECT id, trade_date, position_time, profit, commission, evaluation_score
         FROM evaluation_data
+        ORDER BY id DESC
         '''
-        return  sql
+        return sql
 
+    @torndb.delete
     def remove(self, data_id):
         sql = '''
         DELETE FROM evaluation_data WHERE id = %s
         '''
+        return sql
+
 
 evaluationDataDAO = EvaluationDataDAO()

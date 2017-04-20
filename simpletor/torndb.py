@@ -28,6 +28,7 @@ import itertools
 import logging
 import os
 import time
+import settings
 
 try:
     import MySQLdb.constants
@@ -272,7 +273,6 @@ if MySQLdb is not None:
     IntegrityError = MySQLdb.IntegrityError
     OperationalError = MySQLdb.OperationalError
 
-import settings
 
 torcon = Connection(settings.db_host, settings.db_name, user=settings.db_user, password=settings.db_password)
 
@@ -284,7 +284,7 @@ def transactional(method):
         try:
             result = method(*args, **kwds)
             torcon._db.commit()
-        except Exception, e:
+        except Exception as e:
             torcon._db.rollback()
             raise e
         return result
