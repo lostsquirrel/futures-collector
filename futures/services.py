@@ -32,6 +32,7 @@ def get_nodes():
 
 @transactional
 def save_node(node):
+    n = None
     try:
         n = nodeDAO.find_node(**node)
     except:
