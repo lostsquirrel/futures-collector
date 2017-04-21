@@ -1,0 +1,18 @@
+version: "2"
+services:
+    worker:
+        build:
+            context: .
+        image: registry.cn-hangzhou.aliyuncs.com/lisong/kline:${VERSION}
+
+        networks:
+            - db
+        external_links:
+            - mariadb_10_1_main
+        ports:
+            - "20000:9000"
+        restart: unless-stopped
+networks:
+    db:
+        external:
+            name: db_bridge
