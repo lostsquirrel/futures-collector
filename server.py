@@ -7,6 +7,7 @@ Created on 2013-3-26
 import sys
 
 import tornado.ioloop
+
 from tornado import options
 
 import settings
@@ -21,7 +22,6 @@ if __name__ == '__main__':
     options.options.logging = "debug"
     options.parse_command_line()
 
-    server = tornado.httpserver.HTTPServer(application.Application())
-    server.listen(port)
-    ioloop = tornado.ioloop.IOLoop.instance()
-    ioloop.start()
+    app = application.Application()
+    app.listen(port)
+    tornado.ioloop.IOLoop.current().start()
