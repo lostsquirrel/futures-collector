@@ -40,3 +40,14 @@ function objectifyForm(fid) { //serialize data function
     }
     return returnArray;
 }
+
+function toasts(eid) {
+    var item = $('#' + eid);
+    item.show();
+    setTimeout(function(){ item.hide(); }, 3000);
+}
+
+function fromClear(formId) {
+    $('#' + formId).find("input[type=text], textarea").val("")
+    .find('input[type=range]').val(0);
+}
