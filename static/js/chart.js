@@ -78,7 +78,7 @@ option = {
     dataZoom: [
         {
             type: 'inside',
-            start: 50,
+            start: 0,
             end: 100
         },
         {
@@ -94,71 +94,71 @@ option = {
             name: '日K',
             type: 'candlestick',
             data: [],
-            markPoint: {
-                label: {
-                    normal: {
-                        formatter: function (param) {
-                            return param != null ? Math.round(param.value) : '';
-                        }
-                    }
-                },
-                data: [
-                    {
-                        name: 'XX标点',
-                        coord: ['2013/5/31', 2300],
-                        value: 2300,
-                        itemStyle: {
-                            normal: {color: 'rgb(41,60,85)'}
-                        }
-                    },
-                    {
-                        name: 'highest value',
-                        type: 'max',
-                        valueDim: 'highest'
-                    },
-                    {
-                        name: 'lowest value',
-                        type: 'min',
-                        valueDim: 'lowest'
-                    },
-                    {
-                        name: 'average value on close',
-                        type: 'average',
-                        valueDim: 'close'
-                    }
-                ],
-                tooltip: {
-                    formatter: function (param) {
-                        return param.name + '<br>' + (param.data.coord || '');
-                    }
-                }
-            },
+            // markPoint: {
+            //     label: {
+            //         normal: {
+            //             formatter: function (param) {
+            //                 return param != null ? Math.round(param.value) : '';
+            //             }
+            //         }
+            //     },
+            //     data: [
+            //         {
+            //             name: 'XX标点',
+            //             coord: ['2013/5/31', 2300],
+            //             value: 2300,
+            //             itemStyle: {
+            //                 normal: {color: 'rgb(41,60,85)'}
+            //             }
+            //         },
+            //         {
+            //             name: 'highest value',
+            //             type: 'max',
+            //             valueDim: 'highest'
+            //         },
+            //         {
+            //             name: 'lowest value',
+            //             type: 'min',
+            //             valueDim: 'lowest'
+            //         },
+            //         {
+            //             name: 'average value on close',
+            //             type: 'average',
+            //             valueDim: 'close'
+            //         }
+            //     ],
+            //     tooltip: {
+            //         formatter: function (param) {
+            //             return param.name + '<br>' + (param.data.coord || '');
+            //         }
+            //     }
+            // },
             markLine: {
                 symbol: ['none', 'none'],
                 data: [
-                    [
-                        {
-                            name: 'from lowest to highest',
-                            type: 'min',
-                            valueDim: 'lowest',
-                            symbol: 'circle',
-                            symbolSize: 10,
-                            label: {
-                                normal: {show: false},
-                                emphasis: {show: false}
-                            }
-                        },
-                        {
-                            type: 'max',
-                            valueDim: 'highest',
-                            symbol: 'circle',
-                            symbolSize: 10,
-                            label: {
-                                normal: {show: false},
-                                emphasis: {show: false}
-                            }
-                        }
-                    ],
+                    // [
+                    //     {
+                    //         name: 'from lowest to highest',
+                    //         type: 'min',
+                    //         valueDim: 'lowest',
+                    //         symbol: 'circle',
+                    //         symbolSize: 10,
+                    //         label: {
+                    //             normal: {show: false},
+                    //             emphasis: {show: false}
+                    //         }
+                    //     },
+                    //     {
+                    //         type: 'max',
+                    //         valueDim: 'highest',
+                    //         symbol: 'circle',
+                    //         symbolSize: 10,
+                    //         label: {
+                    //             normal: {show: false},
+                    //             emphasis: {show: false}
+                    //         }
+                    //     }
+                    // ],
                     {
                         name: 'min line on close',
                         type: 'min',
