@@ -75,9 +75,13 @@ class Connection(object):
         self.database = database
         self.max_idle_time = float(max_idle_time)
 
-        args = dict(conv=CONVERSIONS, use_unicode=True, charset=charset,
-                    db=database, init_command=('SET time_zone = "%s"' % time_zone),
-                    connect_timeout=connect_timeout, sql_mode=sql_mode)
+        args = dict(conv=CONVERSIONS,
+                    use_unicode=True,
+                    charset=charset,
+                    db=database,
+                    init_command=('SET time_zone = "%s"' % time_zone),
+                    connect_timeout=connect_timeout,
+                    sql_mode=sql_mode)
         if user is not None:
             args["user"] = user
         if password is not None:
@@ -273,21 +277,18 @@ if MySQLdb is not None:
     IntegrityError = MySQLdb.IntegrityError
     OperationalError = MySQLdb.OperationalError
 
-
 torcon = Connection(settings.db_host, settings.db_name, user=settings.db_user, password=settings.db_password)
 
 
 def transactional(method):
-    result = None
-
     def wrapper(*args, **kwds):
         try:
-            result = method(*args, **kwds)
+            _result = method(*args, **kwds)
             torcon._db.commit()
         except Exception as e:
             torcon._db.rollback()
             raise e
-        return result
+        return _result
 
     return wrapper
 

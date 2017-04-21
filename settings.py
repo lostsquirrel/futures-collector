@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-'''
+"""
 Created on 2013-3-26
 
 @author: zhuhua
-'''
+"""
 import os
 
 installed_apps = ['futures', 'api', 'evaluation']
