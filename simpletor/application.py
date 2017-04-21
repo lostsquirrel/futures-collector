@@ -52,7 +52,7 @@ class RequestHandler(tornado.web.RequestHandler):
         cookie = self.get_secure_cookie('user')
         try:
             return json.loads(cookie)
-        except ValueError:
+        except (ValueError, TypeError):
             return None
 
     def add_error(self, error):
