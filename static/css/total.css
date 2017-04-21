@@ -1,0 +1,42 @@
+body{padding: 50px 0 0 50px;color: #333; font-family: "microsoft yahei","verdana, geneva, arial, helvetica, sans-serif";}
+.t1{font-size: 22px; font-weight: bolder;}
+.t2{font-size: 14px; color: #999; padding-left: 10px;}
+.t3{font-size: 16px; color: #ff0000; padding-top: 10px;}
+.tab1{padding-top:30px;}
+.tab1 th{width: 90px; text-align: left; height: 40px;  padding-top: 10px; }
+.tab1 td{height: 40px;padding-top: 10px;}
+.tab1 input[type=text],.tab2 input[type=text],.tab3 input[type=text],.tab4 input[type=text],.tab5 input[type=text]{width: 200px; height: 30px; font-size: 14px; padding-left: 10px; padding-right: 10px;font-family: "microsoft yahei"; line-height: 28px;}
+.btn1{width: 80px; height: 40px; color: #fff; border: 0; background-color: #31ad31;font-family: "microsoft yahei"; cursor: pointer; border-radius:3px ;}
+.btn1:hover{background-color: #248f24}
+.tab2{background: #CCCCCC;}
+.tab2 th,.tab2 td{width: 120px;text-align: center; padding: 10px 10px; background: #fff;}
+.tab2 th{background: #CCCCCC; font-size: 14px;}
+.tab2 tr:hover td{background: #eee;}
+.tab2 a{color: #ff0000; text-decoration: none;}
+.tab3{padding-top:30px;}
+.tab3 th{width: 250px; text-align: left; height: 40px;  padding-top: 10px;  font-size: 20px;}
+.tab3 td{height: 40px;padding-top: 10px;}
+.tab3 tr .a1{color: #fff; text-decoration: none; font-size: 14px; float: right;padding-right: 10px;}
+.tab3 tr:hover .a1{color: #31ad31;}
+.tab3 tr .a2{color: #fff; text-decoration: none; font-size: 14px; float: left; padding-left: 10px; padding-bottom:10px;}
+.tab3 tr:hover .a2{color: #ff0000;}
+.tab4{padding-top:30px;}
+.tab4 th{width: 90px; text-align: left; height: 40px;  padding-top: 10px; }
+.tab4 td{height: 40px;padding-top: 10px;}
+.tab5{background: #CCCCCC;}
+.tab5 th,.tab5 td{width: 120px;text-align: center; padding: 10px 10px; background: #fff;}
+.tab5 th{background: #CCCCCC; font-size: 14px;}
+.tab5 tr:hover td{background: #eee;}
+.tab5 a{color: #ff0000; text-decoration: none;}
+.tab4 label{float: left; margin-right: 20px;}
+.tab5 .win{color: #ff0000; font-weight: bold;}
+.tab5 .lose{color: #008000; font-weight: bold;}
+
+.btn1{width: 80px; height: 40px; color: #fff; border: 0; background-color: #31ad31;font-family: "microsoft yahei"; cursor: pointer; border-radius:3px ;}
+.btn1:hover{background-color: #248f24}
+.btn2{width: 80px; height: 38px; color: #fff; border: 0; background-color: #1895ff;font-family: "microsoft yahei"; cursor: pointer; border-radius:3px }
+.btn2:hover{background-color: #248f24}
+.s1{width: 60px; padding: 5px; display: inline-block; text-align: center;color: #fff; background: #1895ff; font-size: 12px; text-decoration: none; margin-left: 20px;}
+.s2{width: 60px; padding: 5px; display: inline-block; text-align: center;color: #fff; background: #1895ff; font-size: 12px; float: right;}
+.s3{width: 100px; padding: 5px; display: inline-block; text-align: center;color: #fff; background: #1895ff; font-size: 12px; text-decoration: none; margin-left: 20px;}
+
