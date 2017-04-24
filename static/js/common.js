@@ -42,7 +42,11 @@ function objectifyForm(fid) { //serialize data function
 }
 
 function toasts(eid) {
-    var item = $('#' + eid);
+    var item = $('#' + eid + 'Success');
+    if (!item.length) {
+        item = $('<span class="pdl20 b1" id="'+eid+'Success" style="display:none">保存成功！</span>');
+        $('#' + eid).parent().append(item);
+    }
     item.show();
     setTimeout(function(){ item.hide(); }, 3000);
 }
