@@ -12,8 +12,8 @@ function bindSubmit() {
     $('input[type="submit"]').click(function(){
         myPost(evaluationDataUrl, objectifyForm('dataForm'), function(data){
             // console.log(data)
+            toasts('saveData');
             loadDataList();
-            toasts('evalSuccess');
             fromClear('dataForm');
         });
     });
