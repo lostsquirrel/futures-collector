@@ -40,3 +40,18 @@ function objectifyForm(fid) { //serialize data function
     }
     return returnArray;
 }
+
+function toasts(eid) {
+    var item = $('#' + eid + 'Success');
+    if (!item.length) {
+        item = $('<span class="pdl20 b1" id="'+eid+'Success" style="display:none">保存成功！</span>');
+        $('#' + eid).parent().append(item);
+    }
+    item.show();
+    setTimeout(function(){ item.hide(); }, 3000);
+}
+
+function fromClear(formId) {
+    $('#' + formId).find("input[type=text], textarea").val("")
+    .find('input[type=range]').val(0);
+}

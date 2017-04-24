@@ -84,10 +84,12 @@ class EvaluationDataHandler(application.RequestHandler):
         # print params['evaluation_score']
         data = EvaluationData()
         data.trade_date = params['trade_date']
-        data.position_time = params['position_time']
+        # data.position_time = params.get('position_time')
+        data.position_time_str = params['position_time_str']
         data.profit = params['profit']
         data.commission = params['commission']
         data.evaluation_score = params['evaluation_score']
+        data.volume = params['volume']
         evaluationService.save_data(data)
         self.render_json(SUCCESS_)
 

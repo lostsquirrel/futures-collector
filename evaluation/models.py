@@ -23,11 +23,11 @@ class EvaluationDataDAO:
         sql = '''
         INSERT INTO evaluation_data
         ( 
-        trade_date, position_time, profit, commission, evaluation_score 
+        trade_date, position_time, position_time_str, volume, profit, commission, evaluation_score 
         )
         VALUES
         (
-        %(trade_date)s, %(position_time)s, %(profit)s, %(commission)s, %(evaluation_score)s
+        %(trade_date)s, %(position_time)s, %(position_time_str)s, %(volume)s, %(profit)s, %(commission)s, %(evaluation_score)s
         )
         '''
         return sql
@@ -35,7 +35,7 @@ class EvaluationDataDAO:
     @torndb.select
     def find_all(self):
         sql = '''
-        SELECT id, trade_date, position_time, profit, commission, evaluation_score
+        SELECT id, trade_date, position_time, position_time_str, volume, profit, commission, evaluation_score
         FROM evaluation_data
         ORDER BY id DESC
         '''
