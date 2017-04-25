@@ -28,7 +28,8 @@ body{padding: 50px 0 0 50px;color: #333; font-family: "microsoft yahei","verdana
 .tab5 th{background: #CCCCCC; font-size: 14px;}
 .tab5 tr:hover td{background: #eee;}
 .tab5 a{color: #ff0000; text-decoration: none;}
-.tab4 label{float: left; margin-right: 20px;}
+.tab4 label{float: left; margin-right: 20px; cursor: pointer;}
+.tab4 input[type="radio"]{float: left; margin-top: 4px;}
 .tab5 .win{color: #ff0000; font-weight: bold;}
 .tab5 .lose{color: #008000; font-weight: bold;}
 

@@ -85,7 +85,7 @@ class EvaluationDataHandler(application.RequestHandler):
         data = EvaluationData()
         data.trade_date = params['trade_date']
         # data.position_time = params.get('position_time')
-        data.position_time_str = params['position_time_str']
+        # data.position_time_str = params['position_time_str']
         data.profit = params['profit']
         data.commission = params['commission']
         data.evaluation_score = params['evaluation_score']
