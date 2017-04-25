@@ -26,7 +26,7 @@ clean:
 	docker-compose rm --force
 
 code:
-	cd futures-collector && git pull
+	git pull
 
 update:
 	git pull

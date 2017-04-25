@@ -8,7 +8,8 @@ class EvaluationData(torndb.Row):
         super(EvaluationData, self).__init__(**kwargs)
         self.id = None
         self.trade_date = None
-        self.position_time = None
+        self.position_time = -1
+        self.position_time_str = ''
         self.profit = None
         self.commission = None
         self.evaluation_score = None
