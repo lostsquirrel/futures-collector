@@ -1,4 +1,5 @@
 input,select{vertical-align: middle;}
+p,div{margin: 0; box-sizing: border-box;}
 
 .text-primary,
 a.text-primary:hover, a.text-primary:focus,
