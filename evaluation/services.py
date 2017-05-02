@@ -11,8 +11,6 @@ def save_data(data):
 
 def get_all_data():
     data_list = dataDAO.find_all()
-    for item in data_list:
-        item.position_time = seconds2str(item.position_time)
     return data_list
 
 @transactional

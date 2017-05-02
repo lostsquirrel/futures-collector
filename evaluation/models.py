@@ -38,7 +38,7 @@ class EvaluationDataDAO:
         sql = '''
         SELECT id, trade_date, position_time, position_time_str, volume, profit, commission, evaluation_score
         FROM evaluation_data
-        ORDER BY id DESC
+        ORDER BY trade_date DESC, id DESC
         '''
         return sql
 
