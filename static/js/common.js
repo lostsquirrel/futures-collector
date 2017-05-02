@@ -52,6 +52,8 @@ function toasts(eid) {
 }
 
 function fromClear(formId) {
-    $('#' + formId).find("input[type=text], textarea").val("")
-    .find('input[type=range]').val(0);
+    var tForm = $('#' + formId);
+    tForm.find("input[type=text], textarea").val("");
+    tForm.find('input[type=range]').val(0);
+    tForm.find('input[type=radio]').prop('checked', false);
 }

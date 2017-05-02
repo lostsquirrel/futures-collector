@@ -9,17 +9,13 @@
 
 <body>
 	<div class="t1">交易执行评估</div>
-	<div class="t4">输入单次交易信息<a href="#" class="s3">查看整体统计</a></div>
+	<div class="t4">输入单次交易信息<a href="javascript:void(0)" class="s3">查看整体统计</a></div>
 
 	<form id="dataForm">
 	<table cellpadding="0"  cellspacing="0" class="tab4">
 		<tr>
 			<th>日期</th>
 			<td><input type="text" name="trade_date"/><span class="t2">输入格式“20170101”</span></td>
-		</tr>
-		<tr>
-			<th>持仓时间</th>
-			<td><input type="text" name="position_time_str" /><span class="t2">按00h00m00s输入</span></td>
 		</tr>
 		<tr>
 			<th>盈亏</th>
@@ -34,10 +30,20 @@
 			<td><input type="text" name="volume"/></td>
 		</tr>
 		<tr>
-			<th>执行评价</th>
+			<th>参考周期</th>
 			<td>
-				<input id="evaluationScore" name="evaluation_score" type="range" min="0" max="5" value="0" />
-				<span id="evaluationScoreMonitor">分数：0分</span>
+				<label>
+					<input type="radio" name="evaluation_score" value="10"/>
+					<span>1分钟</span>
+				</label>
+				<label>
+					<input type="radio"  name="evaluation_score" value="50"/>
+					<span>5分钟</span>
+				</label>
+				<label>
+					<input type="radio"  name="evaluation_score" value="150"/>
+					<span>15分钟</span>
+				</label>
 			</td>
 		</tr>
 		<tr>
@@ -50,11 +56,10 @@
 	<table class="tab5" cellpadding="0"  cellspacing="1" id="dataList">
 		<tr>
 			<th>日期</th>
-			<th>持仓时间</th>
 			<th>盈亏</th>
 			<th>手续费</th>
 			<th>成交量</th>
-			<th>执行评价</th>
+			<th>参考周期</th>
 			<th>操作</th>
 		</tr>
 
