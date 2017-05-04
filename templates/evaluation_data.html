@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>交易执行评估</title>
+<link rel="stylesheet" href="/static/css/total.css" />
+<link rel="stylesheet" href="/static/css/grid.css" />
+</head>
+
+<body>
+	<div class="t1">交易执行评估</div>
+	<div class="t4">输入单次交易信息<a href="/evaluation/stats" class="s3">查看整体统计</a></div>
+
+	<form id="dataForm">
+	<table cellpadding="0"  cellspacing="0" class="tab4">
+		<tr>
+			<th>日期</th>
+			<td><input type="text" name="trade_date"/><span class="t2">输入格式“20170101”</span></td>
+		</tr>
+		<tr>
+			<th>盈亏</th>
+			<td><input type="text" name="profit" /><span class="t2">盈利正数，亏损负数，手续费不计入</span></td>
+		</tr>
+		<tr>
+			<th>手续费</th>
+			<td><input type="text" name="commission" /></td>
+		</tr>
+		<tr>
+			<th>成交量</th>
+			<td><input type="text" name="volume"/></td>
+		</tr>
+		<tr>
+			<th>参考周期</th>
+			<td>
+				<label>
+					<input type="radio" name="evaluation_score" value="10"/>
+					<span>1分钟</span>
+				</label>
+				<label>
+					<input type="radio"  name="evaluation_score" value="50"/>
+					<span>5分钟</span>
+				</label>
+				<label>
+					<input type="radio"  name="evaluation_score" value="150"/>
+					<span>15分钟</span>
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<th>&nbsp;</th>
+			<td><input type="submit" value="保存" class="btn1" id="saveData"/></td>
+		</tr>		
+	</table>
+	</form>
+	<div style="padding-top:40px; padding-bottom: 15px;" class="t1">历史数据列表</div>
+	<table class="tab5" cellpadding="0"  cellspacing="1" id="dataList">
+		<tr>
+			<th>日期</th>
+			<th>盈亏</th>
+			<th>手续费</th>
+			<th>成交量</th>
+			<th>参考周期</th>
+			<th>操作</th>
+		</tr>
+
+	</table>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/common.js"></script>
+	<script type="text/javascript" src="/static/js/evaluation_data.js"></script>
+</body>
+</html>
