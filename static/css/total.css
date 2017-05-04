@@ -30,8 +30,8 @@ body{padding: 50px 0 0 50px;color: #333; font-family: "microsoft yahei","verdana
 .tab5 a{color: #ff0000; text-decoration: none;}
 .tab4 label{float: left; margin-right: 20px; cursor: pointer;}
 .tab4 input[type="radio"]{float: left; margin-top: 4px;}
-.tab5 .win{color: #ff0000; font-weight: bold;}
-.tab5 .lose{color: #008000; font-weight: bold;}
+.win{color: #ff0000; font-weight: bold;}
+.lose{color: #008000; font-weight: bold;}
 
 .btn1{width: 80px; height: 40px; color: #fff; border: 0; background-color: #31ad31;font-family: "microsoft yahei"; cursor: pointer; border-radius:3px ;}
 .btn1:hover{background-color: #248f24}
@@ -46,10 +46,14 @@ body{padding: 50px 0 0 50px;color: #333; font-family: "microsoft yahei","verdana
 
 .total_board .pt1{background-color: #bc3721;}
 .total_board .pt2{background-color: #5ab026;}
-.total_board .pt3{background-color: #2c7eda;}
+.total_board .pt3{background-color: #2c7eda; width: auto;}
 .total_board .pt4{background-color: #2c7eda;}
 
+.day5{float: left; width:150px; height: 100px; border-right: #fff 2px solid; margin-right: 15px;}
+.dayall{float: left; width: 250px;}
 
+.day5_ct{}
+.day5_ct .cp{width: 250px; float: left; margin-right: 20px; border: #ccc 2px solid; padding:10px 20px ; font-size: 14px;}
 
 
 
