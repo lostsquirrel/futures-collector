@@ -23,7 +23,9 @@ $(function(){
 
 function saveNode(itemId, ndate, open, close, lowest, highest) {
     var url = '/api/node'
+
     myPost(url, {item: itemId, ndate: ndate, open: open, close: close, lowest: lowest, highest: highest}, function(data){
+        toasts('addNode');
         loadNodes();
     }, 'json');
 }
@@ -67,6 +69,3 @@ function showItem() {
         // addTestData();
     });
 }
-
-
-

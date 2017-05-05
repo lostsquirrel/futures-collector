@@ -11,7 +11,9 @@ function saveItem(name) {
         name: name
     }, function(data) {
        //  console.log('------------')
+        toasts('addItem');
         loadItemList();
+
     });
 }
 
@@ -25,7 +27,7 @@ function saveItem(name) {
 
              h += '<tr class="item">'
              if (v.status == 1) {
-                 h += '<th><span class="s1">当前默认</span>'+v.name+'</th>'
+                 h += '<th><span class="s2">当前默认</span>'+v.name+'</th>'
              } else {
                  h += '<th><a href="javascript:setDefaultItem('+v.id+')" class="a1">设为默认</a>'+v.name+'</th>';
              }

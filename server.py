@@ -1,17 +1,18 @@
 # -*- coding:utf-8 -*-
-'''
+"""
 Created on 2013-3-26
 
 @author: zhuhua
-'''
+"""
 import sys
-import tornado.httpserver
+
 import tornado.ioloop
+
 from tornado import options
 
-from simpletor import application
 import settings
-         
+from simpletor import application
+
 if __name__ == '__main__':
     
     port = settings.port
@@ -21,7 +22,6 @@ if __name__ == '__main__':
     options.options.logging = "debug"
     options.parse_command_line()
 
-    server = tornado.httpserver.HTTPServer(application.Application())
-    server.listen(port)
-    ioloop = tornado.ioloop.IOLoop.instance()
-    ioloop.start()
+    app = application.Application()
+    app.listen(port)
+    tornado.ioloop.IOLoop.current().start()
