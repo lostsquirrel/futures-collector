@@ -6,3 +6,8 @@ from simpletor import application
 class EvaluationDataHandler(application.RequestHandler):
     def get(self):
         self.render('evaluation_data.html')
+
+@application.RequestMapping("/evaluation/stats")
+class EvaluationStatsHandler(application.RequestHandler):
+    def get(self):
+        self.render('evaluation_stats.html')

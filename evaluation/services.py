@@ -2,8 +2,9 @@
 from __future__ import print_function
 from __future__ import print_function
 import re
-from evaluation.models import evaluationDataDAO as dataDAO
 from simpletor.torndb import transactional
+from evaluation.models import evaluationDataDAO as dataDAO
+from evaluation.models import evaluationStatsDAO as statsDAO
 
 @transactional
 def save_data(data):
@@ -64,6 +65,9 @@ def seconds2str(time_seconds):
         time_str = '0s'
 
     return time_str
+
+def get_stats_total():
+    return statsDAO.find_total()
 
 if __name__ == '__main__':
     seconds = str2seconds('1h1m')
