@@ -18,58 +18,57 @@ def get_all_data():
 def remove_data(data_id):
     dataDAO.remove(data_id)
 
-re_time_str_split = re.compile(r'[A-Za-z]')
-time_str_template = ('', '%ds', '%dm%02ds', '%dh%02dm%02ds')
-time_unit = ('h', 'm', 's')
-def str2seconds(time_str):
-    ts = [0] * 3
-    for i in range(3):
-        his = 0
-        hie = 0
-        try:
-            his = time_str.index(time_unit[i - 1])
-            his += 1
-        except (ValueError):
-            pass
-        try:
-            hie = time_str.index(time_unit[i])
-        except (ValueError):
-            pass
-        if hie > 0:
-            hi_ = time_str[his:hie]
-            if hi_ is not None and len(hi_) > 0:
-                ts[i] = int(hi_)
-    total = 0
+def get_stats_general():
+    data = dict()
+    unit_dates = get_unit_dates(5, 0)
+    data.update(*statsDAO.stats_profit_win())
+    data.update(*statsDAO.stats_profit_win_max())
+    data.update(*statsDAO.stats_profit_win_count_total())
+    data.update(*statsDAO.stats_profit_win_count_unit(unit_dates))
+    data.update(*statsDAO.stats_profit_lost())
+    data.update(*statsDAO.stats_profit_lost_max())
+    data.update(*statsDAO.stats_profit_lost_count_total())
+    data.update(*statsDAO.stats_profit_lost_count_unit(unit_dates))
+    data.update(*statsDAO.stats_commission_total())
+    data['earn_sum'] = get_earn_sum(data)
+    data['win_rate'] = get_win_rate(data)
+    return data
 
-    base = 1
-    for x in range(3):
-        total += int(ts.pop()) * base
-        base *= 60
-    return total
 
-def seconds2str(time_seconds):
-    time_str = ''
-    ts = [0] * 3
-    index = 0
-    while time_seconds > 0:
-        ts[index] = (time_seconds % 60)
-        time_seconds /= 60
-        index += 1
-    ts.reverse()
+def get_earn_sum(data):
+    return data['win_sum'] + data['lost_sum'] - data['commission_sum']
 
-    for i in range(len(ts)):
-        if ts[i] > 0:
-            time_str = '%s%02d%s' % (time_str, ts[i], time_unit[i])
 
-    if len(time_str) == 0:
-        time_str = '0s'
+def get_win_rate(data):
+    return float(100) * data['win_count'] / (data['win_count'] + data['lost_count'])
 
-    return time_str
 
-def get_stats_total():
-    return statsDAO.find_total()
+def get_unit_dates(limit, offset):
+    unit_dates = []
+    for d in statsDAO.stats_unit(limit, offset):
+        unit_dates.append(d.trade_date.strftime('%Y-%m-%d'))
+    return unit_dates
+
+
+def get_stats_unit(unit_num=5):
+    limit = 5
+    data_list = []
+    for x in range(unit_num):
+        data = dict()
+        offset = x * limit
+        unit_dates = get_unit_dates(limit, offset)
+        if len(unit_dates) == 0:
+            break
+        data['unit_start'] = unit_dates[0]
+        data['unit_end'] = unit_dates[-1]
+        data.update(*statsDAO.stats_profit_win_count_unit(unit_dates))
+        data.update(*statsDAO.stats_profit_lost_count_unit(unit_dates))
+        data.update(*statsDAO.stats_earn_unit(unit_dates))
+
+        data['win_rate'] = get_win_rate(data)
+        data_list.append(data)
+
+    return data_list
 
 if __name__ == '__main__':
-    seconds = str2seconds('1h1m')
-    print(seconds)
-    print(seconds2str(seconds))
+    pass
