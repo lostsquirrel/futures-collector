@@ -98,3 +98,17 @@ class EvaluationDataHandler(application.RequestHandler):
         data_id = params['id']
         evaluationService.remove_data(data_id)
         self.render_json(SUCCESS_)
+
+@application.RequestMapping("/api/evaluation/stats/general")
+class EvaluationStatsGeneralHandler(application.RequestHandler):
+    def get(self, *args, **kwargs):
+        data = evaluationService.get_stats_general()
+        # print(data)
+        self.render_json(data)
+
+@application.RequestMapping("/api/evaluation/stats/unit")
+class EvaluationStatsUnitHandler(application.RequestHandler):
+    def get(self, *args, **kwargs):
+        data = evaluationService.get_stats_unit()
+        # print(data)
+        self.render_json(data)

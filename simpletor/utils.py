@@ -10,7 +10,7 @@ import random
 import re
 import time
 from datetime import date, datetime
-
+from decimal  import Decimal
 import application
 
 
@@ -42,6 +42,8 @@ class JSONEncoder(json.JSONEncoder):
             return obj.strftime('%Y-%m-%d %H:%M:%S')
         elif isinstance(obj, date):
             return obj.strftime('%Y-%m-%d')
+        elif isinstance(obj, Decimal):
+            return float(obj)
         else:
             return json.JSONEncoder.default(self, obj)
 
@@ -105,3 +107,51 @@ def get_level(score):
             grade -= 1
 
     return grade
+
+re_time_str_split = re.compile(r'[A-Za-z]')
+time_str_template = ('', '%ds', '%dm%02ds', '%dh%02dm%02ds')
+time_unit = ('h', 'm', 's')
+def str2seconds(time_str):
+    ts = [0] * 3
+    for i in range(3):
+        his = 0
+        hie = 0
+        try:
+            his = time_str.index(time_unit[i - 1])
+            his += 1
+        except (ValueError):
+            pass
+        try:
+            hie = time_str.index(time_unit[i])
+        except (ValueError):
+            pass
+        if hie > 0:
+            hi_ = time_str[his:hie]
+            if hi_ is not None and len(hi_) > 0:
+                ts[i] = int(hi_)
+    total = 0
+
+    base = 1
+    for x in range(3):
+        total += int(ts.pop()) * base
+        base *= 60
+    return total
+
+def seconds2str(time_seconds):
+    time_str = ''
+    ts = [0] * 3
+    index = 0
+    while time_seconds > 0:
+        ts[index] = (time_seconds % 60)
+        time_seconds /= 60
+        index += 1
+    ts.reverse()
+
+    for i in range(len(ts)):
+        if ts[i] > 0:
+            time_str = '%s%02d%s' % (time_str, ts[i], time_unit[i])
+
+    if len(time_str) == 0:
+        time_str = '0s'
+
+    return time_str
