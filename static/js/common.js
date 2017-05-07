@@ -57,3 +57,7 @@ function fromClear(formId) {
     tForm.find('input[type=range]').val(0);
     tForm.find('input[type=radio]').prop('checked', false);
 }
+
+function myRound(n, d) {
+    return Math.round(n).toFixed(d);
+}
