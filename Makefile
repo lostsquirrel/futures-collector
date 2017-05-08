@@ -1,6 +1,6 @@
 SHELL=/bin/bash
-VERSION=0.2.3
 
+VERSION=$(shell echo `git describe --abbrev=0 --tags`)
 VERSION_TAG=$(VERSION)
 REGISTRY=registry.cn-hangzhou.aliyuncs.com
 IMAGE=$(REGISTRY)/lisong/kline
