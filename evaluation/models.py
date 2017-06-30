@@ -45,7 +45,7 @@ class EvaluationDataDAO:
     @torndb.select
     def find_all(self):
         sql = '''
-        SELECT id, trade_date, position_time, position_time_str, volume, profit, commission, evaluation_score
+        SELECT id, trade_date, position_time, volume, profit, commission, evaluation_score
         FROM evaluation_data
         ORDER BY trade_date DESC, id DESC
         '''
@@ -70,6 +70,15 @@ class EvaluationStatsDAO:
     def stats_profit_win(self):
         sql = '''
         SELECT SUM(profit) as win_sum FROM evaluation_data WHERE profit > 0
+        '''
+        return sql
+
+    @torndb.get
+    def stats_profit_win_unit(self, unit_dates):
+        sql = '''
+        SELECT SUM(profit) as win_unit FROM evaluation_data 
+        WHERE profit > 0
+        AND trade_date in %s
         '''
         return sql
 
@@ -101,6 +110,14 @@ class EvaluationStatsDAO:
     def stats_profit_lost(self):
         sql = '''
         SELECT SUM(profit) as lost_sum FROM evaluation_data WHERE profit < 0
+        '''
+        return sql
+    @torndb.get
+    def stats_profit_lost_unit(self, unit_dates):
+        sql = '''
+        SELECT SUM(profit) as lost_unit FROM evaluation_data
+        WHERE profit < 0
+        AND trade_date in %s
         '''
         return sql
 
@@ -141,6 +158,14 @@ class EvaluationStatsDAO:
     def stats_commission_total(self):
         sql = '''
         SELECT SUM(commission) as commission_sum FROM evaluation_data
+        '''
+        return sql
+
+    @torndb.get
+    def stats_commission_unit(self, unit_dates):
+        sql = '''
+        SELECT SUM(commission) as commission_unit FROM evaluation_data
+        WHERE trade_date in %s
         '''
         return sql
 

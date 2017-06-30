@@ -64,6 +64,30 @@ def get_stats_unit(unit_num=5):
         data.update(*statsDAO.stats_earn_unit(unit_dates))
 
         data['win_rate'] = get_win_rate(data)
+        win = statsDAO.stats_profit_win_unit(unit_dates).win_unit
+        win_count = data.get('win_count')
+        if win is None:
+            win = 0
+        if win_count is None:
+            win_count = 1
+        win = float(win) / win_count
+        lose = statsDAO.stats_profit_lost_unit(unit_dates).lost_unit
+        lose_count = data.get('lost_count')
+        if lose_count is None:
+            lose_count = 1
+        if lose is None:
+            lose = 0
+
+
+        commission = statsDAO.stats_commission_unit(unit_dates).commission_unit
+        if commission is None:
+            commission = 0
+        commission = float(commission) / (lose_count + win_count)
+
+        win_lose_rate = 100.0 * win  / (lose + commission)
+        if win_lose_rate < 0 :
+            win_lose_rate *= -1
+        data['win_lose_rate'] = win_lose_rate
         data_list.append(data)
 
     return data_list
