@@ -78,13 +78,15 @@ def get_stats_unit(unit_num=5):
         if lose is None:
             lose = 0
 
+        lose = float(lose) / lose_count
+        # commission = statsDAO.stats_commission_unit(unit_dates).commission_unit
+        # if commission is None:
+        #     commission = 0
+        # commission = float(commission) / (lose_count + win_count)
 
-        commission = statsDAO.stats_commission_unit(unit_dates).commission_unit
-        if commission is None:
-            commission = 0
-        commission = float(commission) / (lose_count + win_count)
-
-        win_lose_rate = 100.0 * win  / (lose + commission)
+        win_lose_rate = 100
+        if not lose == 0:
+            win_lose_rate = 100.0 * win  / lose
         if win_lose_rate < 0 :
             win_lose_rate *= -1
         data['win_lose_rate'] = win_lose_rate
