@@ -26,7 +26,7 @@ function myAjax(url, method, data, callback) {
 }
 
 function bindRange(eid) {
-    $('#' + eid).on('change', function(e) {
+    $('#' + eid).on('change', function (e) {
         $('#' + eid + "Monitor").html("分数：" + $(this).val() + "分");
     });
 }
@@ -44,11 +44,13 @@ function objectifyForm(fid) { //serialize data function
 function toasts(eid) {
     var item = $('#' + eid + 'Success');
     if (!item.length) {
-        item = $('<span class="pdl20 b1" id="'+eid+'Success" style="display:none">保存成功！</span>');
+        item = $('<span class="pdl20 b1" id="' + eid + 'Success" style="display:none">保存成功！</span>');
         $('#' + eid).parent().append(item);
     }
     item.show();
-    setTimeout(function(){ item.hide(); }, 3000);
+    setTimeout(function () {
+        item.hide();
+    }, 3000);
 }
 
 function fromClear(formId) {
@@ -59,5 +61,17 @@ function fromClear(formId) {
 }
 
 function myRound(n, d) {
-    return Math.round(n).toFixed(d);
+    return Number( Number(n).toFixed(d)).toString();
+}
+
+function isInt(n) {
+    return n % 1 === 0;
+}
+
+function isFloadOne(n) {
+    return n % 0.1 === 0;
+}
+
+function isFloadTwo(n) {
+    return n % 0.01 === 0;
 }
