@@ -88,7 +88,7 @@ class EvaluationDataHandler(application.RequestHandler):
         # data.position_time_str = params['position_time_str']
         data.profit = params['profit']
         data.commission = params['commission']
-        data.evaluation_score = params['evaluation_score']
+        data.direction_type = params['direction_type']
         data.volume = params['volume']
         evaluationService.save_data(data)
         self.render_json(SUCCESS_)
