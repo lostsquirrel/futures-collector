@@ -4,6 +4,7 @@ $(function () {
     loadDataList();
 });
 var evaluationRef = {10: '1分钟', 50: '5分钟', 150: '15分钟'};
+var directionTypeRef = {1: '多单', 2: '空单'}
 
 var evaluationDataUrl = '/api/evaluation/data'
 function bindSubmit() {
@@ -38,7 +39,7 @@ function loadDataList() {
             h += '<td><span class="'+(profitClass)+'">'+v.profit+'</span></td>';
             h += '<td>'+v.commission+'</td>';
             h += '<td>'+v.volume+'</td>';
-            h += '<td>'+evaluationRef[v.evaluation_score]+'</td>';
+            h += '<td>'+directionTypeRef[v.direction_type]+'</td>';
             h += '<td><a href="javascript:removeData('+v.id+')" >删除</a></td>';
             h += '</tr>';
         });
