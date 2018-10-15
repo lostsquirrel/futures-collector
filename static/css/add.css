@@ -1480,3 +1480,13 @@ a, a:hover {
 .main_menus .bg5 {
   background-color: #f60;
 }
+
+.bottom_bar {
+  text-align: center;
+  font-size: 14px;
+  line-height: 4;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
