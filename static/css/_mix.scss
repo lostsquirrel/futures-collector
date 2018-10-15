@@ -1,0 +1,247 @@
+@mixin ctr_wrap($width){width:$width;margin: 0 auto;}
+
+
+@mixin txa($side){text-align: $side;}
+@mixin txv($side){vertical-align: $side;}
+@mixin txs($fsz){font-size: $fsz;}
+@mixin txlh($lh){line-height: $lh;}
+@mixin txas($side,$fsz){@include txa($side);@include txs($fsz)}
+@mixin txsh($fsz,$lh){@include txs($fsz);@include txlh($lh)}
+@mixin txash($side,$fsz,$lh){@include txas($side,$fsz);@include txlh($lh)}
+
+@mixin pds($side,$pd){padding-#{$side}:$pd;}
+@mixin pda($pd){padding:$pd;}
+@mixin mgs($side,$mg){margin-#{$side}:$mg;}
+@mixin mga($mg){margin:$mg;}
+
+@mixin bds($side,$cor,$bd:1px,$bs:solid){border-#{$side}:$cor $bd $bs;}
+@mixin bda($cor,$bd:1px,$bs:solid){border:$cor $bd $bs;}
+@mixin bdr($bd){border-radius:$bd;-moz-border-radius:$bd;-webkit-border-radius:$bd;}
+
+@mixin clr($cor){color: $cor;}
+@mixin ahr($cor){@include clr($cor);&:hover,&:focus{color:darken($cor,10%);}}
+
+@mixin tab_wrap($width){
+    width: $width; margin-bottom: 20px;
+    td{
+        @include bda($ch5);
+        border-collapse: collapse;
+        @include txa(left);
+        @include pda(0 10px);
+    }
+    thead td{
+        background:$ch6;
+        @include txlh(36px);
+        @include txa(center);
+    }
+    tbody td{min-height: 40px;}
+    tbody tr:hover td{background: $ch7;}
+}
+
+
+
+@mixin input_box($width1,$width2){
+    dl{
+        &:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+        }
+        dt{
+            width: $width1;
+            height: 60px;
+            @include txash(left,14px,40px);     
+            @include mgs(right,25px);
+            @include pda(10px 0);
+            float: left;
+            color: $ch2;
+            font-weight: bold;
+        }
+        dd{
+            width:$width2;
+            float:left;
+            @include mgs(top,10px);
+            @include txash(left,14px,40px);
+            input,a,label,textarea,span,select{float: left;}
+            input[type="text"],input[type="password"],input[type="date"],select{
+                width:$df_width;height: 40px;@include bda($ch5);color: $ch2; @include txsh(14px,38px);@include bdr(2px);@include pda(0 10px);@include mgs(right,10px);
+                &:hover,&:focus{@include bda($ch3);}
+            }
+            input[type="text"].small{width: 180px;}
+            input[type="text"].big{width: 436px;}
+            input[type="radio"],input[type="checkbox"]{@include mga(14px 5px 0 0);}
+            label{@include mgs(right,30px)}
+            select{@include mgs(right,20px)}
+            select.big{width: $dfselect_width2;}
+            select.small{width: $dfselect_width1;}
+            textarea{
+                font-family:"microsoft yahei";
+                width:$dftxr_width;
+                height: 120px;
+                resize: none;
+                @include bda($ch5);
+                @include bdr(2px);
+                @include pda(7px);                
+                @include txsh(14px,1.5);
+                @include mgs(bottom,10px);
+                &:hover,&:focus{@include bda($ch3);}
+            }
+            &:after,label:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+            }            
+        }
+        
+    }
+}
+
+@mixin btns_gp1($cor1,$cor2,$ev1){
+    transition: 200ms;
+    display: inline-block;
+    background-color: $cor1;
+    color: $cor2;    
+    @include txa(center);    
+    @if $cor2==$cw1{border: 0;}
+    @else{@include bda($ch5);}
+    //&:focus{background-color: darken($cor1,10%);color: $cor2;}
+    &:hover
+        {
+
+            box-shadow: 1px 1px 3px $ch5;
+            background-color: darken($cor1,10%);color: $cor2;
+            animation: $ev1 200ms;
+            -moz-animation: $ev1 200ms;
+            -webkit-animation: $ev1 200ms;
+        }
+    &.btn_disabled:hover{animation:none;-moz-animation:none;-webkit-animation:none;}
+        @keyframes #{$ev1}{
+          0% {background-color:$cor1;box-shadow:none;}
+          100% {background-color: darken($cor1,10%);box-shadow: 1px 1px 3px $ch5;}
+        }
+ 
+        @-moz-keyframes #{$ev1}
+        {
+          0% {background-color:$cor1;box-shadow:none;}
+          100% {background-color: darken($cor1,10%);box-shadow: 1px 1px 3px $ch5;}
+        }
+ 
+        @-webkit-keyframes #{$ev1}
+        {
+          0% {background-color:$cor1;box-shadow:none;}
+          100% {background-color: darken($cor1,10%);box-shadow: 1px 1px 3px $ch5;}
+        }
+}
+
+@mixin btns_gp($cor1,$cor2,$height,$ev1,$pd:8px,$fsz:12px,$wt:normal){
+    @if $height==24px{$pd:8px;$fsz:12px}
+    @if $height==30px{$pd:10px;$fsz:12px}
+    @if $height==40px{$pd:15px;$fsz:14px}
+    @if $height==50px{$pd:25px;$fsz:16px;$wt:bold}
+    @include btns_gp1($cor1,$cor2,$ev1);
+    @include txlh($height - 1);
+    @include pda(0 $pd);
+    @include txs($fsz);
+    @include bdr(2px);    
+    height: $height;  
+    font-weight: $wt;  
+}
+
+@mixin btns_gpw($cor1,$cor2,$height,$width,$pd:8px,$fsz:12px,$wt:normal){
+    @include btns_gp($cor1,$cor2,$height,$pd,$fsz,$wt);
+    @include pda(0 $pd);
+    width:$width;
+}
+
+@mixin ani_time($ev1,$time){
+    animation: $ev1 $time;
+    -moz-animation: $ev1 $time;
+    -webkit-animation: $ev1 $time;
+}
+
+@mixin ani_op($ev1,$time,$op1,$op2){
+    @include ani_time($ev1,$time);
+    @keyframes #{$ev1}{
+        0% {opacity: $op1;}
+        100% {opacity: $op2;}
+    }         
+    @-moz-keyframes #{$ev1}{
+        0% {opacity: $op1;}
+        100% {opacity: $op2;}
+    }         
+    @-webkit-keyframes #{$ev1}{
+        0% {opacity: $op1;}
+        100% {opacity: $op2;}
+    }
+}
+
+@mixin ani_bg($ev1,$time,$cor1,$cor2){
+    @include ani_time($ev1,$time);
+    @keyframes #{$ev1}{
+        0% {background-color: $cor1;}
+        100% {background-color: $cor2;}
+    }         
+    @-moz-keyframes #{$ev1}{
+        0% {background-color: $cor1;}
+        100% {background-color: $cor2;}
+    }         
+    @-webkit-keyframes #{$ev1}{
+        0% {background-color: $cor1;}
+        100% {background-color: $cor2;}
+    }
+}
+
+
+@mixin input_sg($width1){
+    width:$width1;height: 40px;float: left;@include bda($ch5);color: $ch2; @include txsh(14px,38px);@include bdr(2px);@include pda(0 10px);@include mgs(right,10px);
+}
+@mixin input_sm($width1){
+    width:$width1;height: 20px;float: left;@include bda($ch5);color: $ch2; @include txsh(12px,18px);@include bdr(2px);@include pda(0 5px);@include mgs(right,10px);
+}
+
+@mixin chg_bd($cor,$bd){
+    @include bds(left,$cor,$bd);
+}
+
+@mixin input_box_s($width1,$width2,$inp_width){
+    dl{
+        &:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+        }
+        dt{
+            width: $width1;
+            height: 60px;
+            @include txash(left,14px,40px);     
+            @include mgs(right,10px);
+            @include pda(10px 0);
+            float: left;
+            color: $ch2;
+            font-weight: bold;
+        }
+        dd{
+            width:$width2;
+            float:left;
+            @include mgs(top,10px);
+            @include txash(left,14px,40px);
+            input,a,label,textarea,span,select{float: left;}
+            input[type="text"],input[type="password"],input[type="date"],select{
+                width:$inp_width;height: 40px;@include bda($ch5);color: $ch2; @include txsh(14px,38px);@include bdr(2px);@include pda(0 10px);@include mgs(right,10px);
+                &:hover,&:focus{@include bda($ch3);}
+            }
+            input[type="radio"],input[type="checkbox"]{@include mga(14px 5px 0 0);}
+            label{@include mgs(right,30px)}
+            select{@include mgs(right,20px)}
+            textarea{
+                width:$dftxr_width;
+                height: 120px;
+                resize: none;
+                @include bda($ch5);
+                @include bdr(2px);
+                @include pda(7px);                
+                @include txsh(14px,1.5);
+                @include mgs(bottom,10px);
+                &:hover,&:focus{@include bda($ch3);}
+            }
+            &:after,label:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+            }            
+        }
+        
+    }
+}
