@@ -14,6 +14,7 @@ class EvaluationData(torndb.Row):
         self.commission = None
         self.evaluation_score = None
         self.direction_type = None
+        self.trading_variety = None
 
 class StatsGeneral(torndb.Row):
     def __init__(self):
@@ -34,11 +35,11 @@ class EvaluationDataDAO:
         sql = '''
         INSERT INTO evaluation_data
         ( 
-        trade_date, volume, profit, commission, evaluation_score, direction_type
+        trade_date, volume, profit, commission, evaluation_score, direction_type, trading_variety
         )
         VALUES
         (
-        %(trade_date)s, %(volume)s, %(profit)s, %(commission)s, %(evaluation_score)s, %(direction_type)s
+        %(trade_date)s, %(volume)s, %(profit)s, %(commission)s, %(evaluation_score)s, %(direction_type)s, %(trading_variety)s
         )
         '''
         return sql
@@ -46,7 +47,7 @@ class EvaluationDataDAO:
     @torndb.select
     def find_all(self):
         sql = '''
-        SELECT id, trade_date, position_time, volume, profit, commission, evaluation_score, direction_type
+        SELECT id, trade_date, position_time, volume, profit, commission, evaluation_score, direction_type, trading_variety
         FROM evaluation_data
         ORDER BY trade_date DESC, id DESC
         '''
