@@ -189,4 +189,4 @@ a.text-primary:hover, a.text-primary:focus,
 .std_tab tr:hover td,.std_tab tr:hover th{background: #fafafa;}
 .std_tab.totaltab th{width: 120px;}
 
-
+.btn_today{display:inline-block;padding:0 15px;height: 36px; background: #2284e9;color: #fff;cursor: pointer;border-radius: 2px;font-size: 14px;line-height: 35px;}
