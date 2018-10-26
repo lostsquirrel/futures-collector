@@ -40,6 +40,7 @@ function loadDataList() {
             h += '<td>'+v.commission+'</td>';
             h += '<td>'+v.volume+'</td>';
             h += '<td>'+directionTypeRef[v.direction_type]+'</td>';
+            h += '<td>'+v.trading_variety+'</td>';
             h += '<td><a href="javascript:removeData('+v.id+')" >删除</a></td>';
             h += '</tr>';
         });
