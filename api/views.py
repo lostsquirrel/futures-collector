@@ -89,6 +89,7 @@ class EvaluationDataHandler(application.RequestHandler):
         data.profit = params['profit']
         data.commission = params['commission']
         data.direction_type = params['direction_type']
+        data.trading_variety = params['trading_variety']
         data.volume = params['volume']
         evaluationService.save_data(data)
         self.render_json(SUCCESS_)
