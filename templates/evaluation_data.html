@@ -5,6 +5,7 @@
 <title>交易执行评估</title>
 <link rel="stylesheet" href="/static/css/total.css" />
 <link rel="stylesheet" href="/static/css/grid.css" />
+
 </head>
 
 <body>
@@ -15,7 +16,11 @@
 	<table cellpadding="0"  cellspacing="0" class="tab4">
 		<tr>
 			<th>日期</th>
-			<td><input type="text" name="trade_date"/><span class="t2">输入格式“20170101”</span></td>
+			<td>
+				<input type="text" id="date_input" name="trade_date"/>
+				<span id="fill_today" class="btn_today">今天</span>
+				<span class="t2">输入格式“20170101”</span>
+			</td>
 		</tr>
 		<tr>
 			<th>盈亏</th>
@@ -43,6 +48,13 @@
 			</td>
 		</tr>
 		<tr>
+			<th>交易品种</th>
+			<td>
+				<input id="variety_in" type="text" name="trading_variety"/>
+				<span id="fill_variety" class="btn_today">RB</span>
+			</td>
+		</tr>
+		<tr>
 			<th>&nbsp;</th>
 			<td><input type="submit" value="保存" class="btn1" id="saveData"/></td>
 		</tr>		
@@ -56,6 +68,7 @@
 			<th>手续费</th>
 			<th>成交量</th>
 			<th>多空类型</th>
+			<th>品种</th>
 			<th>操作</th>
 		</tr>
 
@@ -63,5 +76,24 @@
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/static/js/common.js"></script>
 	<script type="text/javascript" src="/static/js/evaluation_data.js"></script>
+	<script type="text/javascript">
+		var d0 = new Date()
+		function Appendzero(obj)
+	    {
+	        if(obj<10) return "0" +""+ obj;
+	        else return obj;
+	    }
+		var y1 = d0.getFullYear().toString()
+		var m1 = Appendzero(d0.getMonth()).toString()
+		var d1 = d0.getDate().toString()		
+		$(document).ready(function(){
+			$("#fill_today").click(function(){
+		    	$("#date_input").val(y1 + m1 + d1);
+		  	});
+		  	$("#fill_variety").click(function(){
+		    	$("#variety_in").val("RB");
+		  	});
+		});
+	</script>
 </body>
 </html>
