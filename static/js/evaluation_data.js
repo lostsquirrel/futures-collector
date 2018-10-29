@@ -19,7 +19,7 @@ function bindSubmit() {
             toasts('saveData');
             loadDataList();
             fromClear('dataForm');
-            $('input[type="submit"]').removeAttr()("disabled");
+            $('input[type="submit"]').removeAttr("disabled");
     		$('input[type="submit"]').val("保存");
         });        
     });
