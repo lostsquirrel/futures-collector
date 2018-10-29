@@ -12,12 +12,16 @@ function bindSubmit() {
         return false;
     })
     $('input[type="submit"]').click(function(){
+    	$('input[type="submit"]').attr("disabled","disabled");
+    	$('input[type="submit"]').val("保存中");
         myPost(evaluationDataUrl, objectifyForm('dataForm'), function(data){
             // console.log(data)
             toasts('saveData');
             loadDataList();
             fromClear('dataForm');
-        });
+            $('input[type="submit"]').removeAttr()("disabled");
+    		$('input[type="submit"]').val("保存");
+        });        
     });
 }
 
