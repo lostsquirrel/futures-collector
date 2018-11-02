@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>首页</title>
+<link rel="stylesheet" href="/static/css/grid_wap.css" />
+
+</head>
+
+<body>
+	<div class="top_bar">
+		<span>基础统计</span>
+		<a onclick="window.history.go(-1);" ><img src="/static/img/btn_backward.png" /></a>
+	</div>
+	<div class="bd_total1 clearfix">
+		<div class="dfl">
+			<div class="tt">总体盈利</div>
+			<div class="profit" id="win_sum"></div>
+			<div class="pmax">Max:<span id="win_max"></span></div>
+		</div>
+		<div class="dfr txar">
+			<div class="tt">总体亏损</div>
+			<div class="losts" id="lost_sum"></div>
+			<div class="lmax">Max:<span id="lost_max"></span></div>
+		</div>
+		<div class="cline clear"></div>
+		<div class="dfl">
+			<div class="tt">总体盈余</div>
+			<div class="profit_win" id="earn_sum"></div>			
+		</div>
+		<div class="dfr pdt10 txar">
+			<div class="profit_win_add">累计手续费：<span id="commission_sum"></span></div>
+			<div class="profit_win_add">总体盈亏比：<span id="win_lose_rate_sum"></span></div>
+		</div>		
+	</div>
+	<div class="bd_total1 clearfix">
+		<div class="dfl">
+			<div class="tt">总体交易胜率</div>
+			<div class="perwin"><span id="win_rate"></span>%</div>
+			<div class="perwin_add">盈利：<span id="win_count"></span>次（<span id="win_volume"></span>总成交量）</div>
+			<div class="perwin_add">亏损：<span id="lost_count"></span>次（<span id="lost_volume"></span>总成交量）</div>
+		</div>		
+		<div class="cline clear"></div>
+		<div class="dfl">
+			<div class="tt">最近5个交易日</div>
+			<div class="perwin" id="unit_win_rate"></div>
+			<div class="perwin_add">盈亏比：<span id="win_lose_rate_unit"></span></div>	
+		</div>	
+		<div class="dfr">
+			<div class="tt">结算盈余</div>
+			<div class="profit_win" id="unit_earn_sum"></div>
+		</div>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/evaluation_stats.js"></script>
+</body>
+</html>

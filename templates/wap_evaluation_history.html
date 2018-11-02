@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>首页</title>
+<link rel="stylesheet" href="/static/css/grid_wap.css" />
+
+</head>
+
+<body>
+	<div class="top_bar">
+		<span>交易历史数据</span>
+		<a onclick="window.history.go(-1);" ><img src="/static/img/btn_backward.png" /></a>
+	</div>
+	<div class="tab10_wrap">
+		<table class="tab10" cellpadding="0"  cellspacing="1" id="dataList">
+			<tr>
+				<td width="20%">日期</td>
+				<td width="16%">盈亏</td>
+				<td width="13%">手续费</td>
+				<td width="13%">成交量</td>
+				<td>多空</td>
+				<td>品种</td>
+				<td>操作</td>
+			</tr>
+			
+		</table>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/evaluation_data.js"></script>
+</body>
+</html>

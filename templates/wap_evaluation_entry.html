@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>首页</title>
+<link rel="stylesheet" href="/static/css/grid_wap.css" />
+
+</head>
+
+<body>
+	<div class="top_bar">
+		<span>交易执行评估数据录入</span>
+		<a onclick="window.history.go(-1);" ><img src="/static/img/btn_backward.png" /></a>
+	</div>
+	<div class="input_box1 pdt20">
+		<dl>
+			<dt>日 期</dt>
+			<dd>
+				<input type="text" class="small" id="date_input" name="trade_date" />
+				<a class="btns" id="fill_today" >今天</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt>盈 亏</dt>
+			<dd>
+				<input type="text" name="profit"  />
+			</dd>
+		</dl>
+		<dl>
+			<dt>手 续 费</dt>
+			<dd>
+				<input type="text" name="commission" />
+			</dd>
+		</dl>
+		<dl>
+			<dt>成 交 量</dt>
+			<dd>
+				<input type="text" name="volume" />
+			</dd>
+		</dl>
+		<dl>
+			<dt>多空类型</dt>
+			<dd>
+				<label>
+					<input type="radio" name="direction_type" value="1" />
+					<span class="">多单</span>
+				</label>
+				<label>
+					<input type="radio" name="direction_type" value="2" />
+					<span class="">空单</span>
+				</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt>交易品种</dt>
+			<dd>
+				<input type="text" class="small" id="variety_in" name="trading_variety" />
+				<a class="btns" id="fill_variety">RB</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt></dt>
+			<dd class="sub_txt">
+				<input type="submit" value="保存" class="sub_btn" id="saveData" />
+			</dd>
+		</dl>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/common.js"></script>
+	<script type="text/javascript" src="/static/js/evaluation_data.js"></script>
+	<script type="text/javascript">
+		var d0 = new Date()
+		function Appendzero(obj)
+	    {
+	        if(obj<10) return "0" +""+ obj;
+	        else return obj;
+	    }
+		var y1 = d0.getFullYear().toString()
+		var m1 = Appendzero(d0.getMonth() + 1).toString()
+		var d1 = Appendzero(d0.getDate()).toString()		
+		$(document).ready(function(){
+			$("#fill_today").click(function(){
+		    	$("#date_input").val(y1 + m1 + d1);
+		  	});
+		  	$("#fill_variety").click(function(){
+		    	$("#variety_in").val("RB");
+		  	});
+		});
+	</script>
+</body>
+</html>
