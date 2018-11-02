@@ -85,7 +85,7 @@
 	    }
 		var y1 = d0.getFullYear().toString()
 		var m1 = Appendzero(d0.getMonth() + 1).toString()
-		var d1 = d0.getDate().toString()		
+		var d1 = Appendzero(d0.getDate()).toString()		
 		$(document).ready(function(){
 			$("#fill_today").click(function(){
 		    	$("#date_input").val(y1 + m1 + d1);
