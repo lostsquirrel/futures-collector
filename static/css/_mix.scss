@@ -245,3 +245,62 @@
         
     }
 }
+
+@mixin input_box_wap($width1,$width2,$inp_width1,$inp_width2){
+    dl{
+        margin-bottom:10px;
+        &:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+        }
+        dt{
+            width: $width1;
+            height: 32px;
+            @include txash(left,1em,32px);     
+            @include mgs(right,2%);
+            float: left;
+            color: $cw1;
+            font-weight: bold;
+        }
+        dd{
+            width:$width2;
+            float:left;
+            @include txash(left,1em,32px);
+            input,a,label,textarea,span,select{float: left;}
+            input[type="text"],input[type="password"],input[type="date"],select{
+                width:$inp_width1;height: 32px;background:url(../img/bg_inp.png);color: $ch2; @include txsh(1em,32px);border: 0;@include bdr(2px);@include pda(0 10px);
+                &.small{width: $inp_width2;}
+                &:hover,&:focus{@include bda($ch3);}
+            }
+            input[type="radio"],input[type="checkbox"]{@include mga(11px 5px 0 0);}
+            label{@include mgs(right,20px);color: $cw1;}
+            .btns{
+                width: 20%;margin-left: 4%;
+                height: 32px;background-color: $cb1;color: $cw1;line-height: 32px;text-align: center;@include bdr(2px);
+            }
+
+            &:after,label:after{
+            display:block;clear:both;content:"";visibility:hidden;height:0;
+            }            
+            .sub_btn{width: 40%; height: 32px;@include bdr(2px);background: $cb1;text-align: center;line-height: 32px;color: $cw1;border: 0}
+        }
+        
+    }
+}
+
+@mixin tab_wrap_wap($width){
+    width: $width; margin-bottom: 40px;
+    td{
+        @include bda($ch3);
+        border-collapse: collapse;
+        @include pda(0 4px);
+        font-size: .6em;
+        color: $ch5;
+        @include txlh(32px);
+    }
+    thead td{
+        background:$ch1;
+        @include txa(center);
+        
+    }
+    tbody td{min-height: 36px;}
+}

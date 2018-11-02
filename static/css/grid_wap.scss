@@ -1,0 +1,59 @@
+@import "var_wap";
+@import "mix";
+
+body{background: $ch1 url(../img/main_bg1.jpg) top center no-repeat fixed; background-size: cover;}
+.w_head{
+    width: 100%;
+    top:10%;position:absolute;z-index: 2;color: $cw1;font-size: .8em;text-align: center;
+    margin-bottom: 10%;
+    img{width: 14%;}
+}
+.btns_pt{
+    width: 100%; height:80%;position: fixed; z-index: 3;top:30%;
+    background: $ch1 url(../img/main_bg2.png) top center no-repeat;background-size: cover;
+    text-align: center;
+    a{display: inline-block;width: 45%;margin-left: 2%;margin-right: 2%; margin-top: 1em;}
+    img{width: 100%;}
+}
+
+.top_bar{
+    width: 100%; height: 40; text-align: center;line-height: 40px; color: $cw1;font-size: 1em;
+    a{width: 10%;position: fixed;left:1%; top:.5%;z-index: 100;}
+    img{width: 100%;}
+}
+.input_box1{
+    @include ctr_wrap(90%);
+    @include input_box_wap(20%,78%,99%,75%);
+}
+
+.tab10_wrap{@include ctr_wrap(96%);}
+.tab10{@include tab_wrap_wap(100%);text-align: center;}
+
+.bd_total1{
+    @include ctr_wrap(96%);margin-top:20px; background: url(../img/bg_board.png);@include bdr(10px);padding: 10px 20px;
+    .tt{font-size: .8em;color: $ch4;}
+}
+
+.profit{
+    font-size: 1.5em;color: $cr1;margin-left: -2px;
+}
+.pmax{font-size: .8em;color: $cr1;}
+.losts{
+    font-size: 1.5em;color: $cg1;
+}
+.lmax{font-size: .8em;color: $cg1;}
+.cline{width: 100%;padding-top:10px;margin-bottom: 10px;@include bds(bottom,$ch2);}
+.profit_win{font-size: 1.5em;color: $cb1;}
+.profit_win_add{font-size: .8em;color: $cb1;}
+.perwin{font-size: 1.5em;color: $cw1;}
+.perwin_add{font-size: .8em;color: $cw1;}
+
+.sub_txt{
+    span{
+        font-size: .6em;
+        &.pdl20{padding-left:10px;}
+        color:$cb1
+    }
+}
+.win{font-weight: bold;color: $cr1;}
+.lose{font-weight: bold;color: $cg1;}
