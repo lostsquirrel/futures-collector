@@ -19,12 +19,15 @@ function myAjax(url, method, data, callback) {
         url: url,
         data: JSON.stringify(data),
         success: callback,
+        error: errorHandler,
         dataType: 'json',
         method: method,
         contentType: 'application/json; charset=UTF-8'
     });
 }
-
+function errorHandler(e) {
+    console.log("请求失败" + e)
+}
 function bindRange(eid) {
     $('#' + eid).on('change', function (e) {
         $('#' + eid + "Monitor").html("分数：" + $(this).val() + "分");
