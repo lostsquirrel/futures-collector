@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>首页</title>
+<link rel="stylesheet" href="../css/grid_wap.css" />
+
+</head>
+
+<body>
+	<div class="top_bar">
+		<span>高级统计</span>
+		<a href="#"><img src="../img/btn_backward.png" /></a>
+	</div>
+	<div class="pt_head"><span>多空单全局统计</span></div>
+	<div class="clearfix" style="height: 40%;">
+		
+		<div id="dkdPie" class="dkd_graphic"></div>
+		<div class="dkd_per pdt20">
+			<p class="cb3"><b>多单</b><span class="txs12 pdl05" id="pTrade">1231</span><span>笔</span></p>
+			<p class="cw1"><b id="pCounts">123</b><span class="txs12 pdl05">成交量</span></p>
+			<p class="cw1"><b id="pWinRate"></b><span class="txs12 pdl05">胜率</span></p>
+			<!--<p class="cw1"><b id="pRateSums">185.00%</b><span class="txs12 pdl05">盈亏比</span></p>-->
+			<p class="cr4 pdt15"><b>空单</b><span class="txs12 pdl05" id="eTrade">1231</span><span>笔</span></p>
+			<p class="cw1"><b id="eCounts">123</b><span class="txs12 pdl05">成交量</span></p>
+			<p class="cw1"><b id="eWinRate">85.00%</b><span class="txs12 pdl05">胜率</span></p>
+			<!--<p class="cw1"><b id="eRateSums">185.00%</b><span class="txs12 pdl05">盈亏比</span></p>-->
+		</div>
+	</div>
+	<div class="pt_head mgb10"><span>多空单按月胜率统计</span></div>
+	<div id="winRateSticks" style="width:95%;height: 40%;margin-left: 3%;"></div>
+	
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/analysis_data.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+
+       
+</body>
+
+</html>
