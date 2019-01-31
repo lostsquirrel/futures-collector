@@ -31,3 +31,8 @@ class EvaluationHistoryHandler(application.RequestHandler):
 class EvaluationTotalHandler(application.RequestHandler):
     def get(self):
         self.render('wap_total.html')
+        
+@application.RequestMapping("/evaluation/analysis")
+class EvaluationAnalysisHandler(application.RequestHandler):
+    def get(self):
+        self.render('wap_analysis.html')
