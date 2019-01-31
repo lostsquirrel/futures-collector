@@ -1,8 +1,8 @@
 $abs:absolute;$ret:relative;$fix:fixed;
-$cr1:#f00;$cr2:#de2220;$cr3:#b81a21;
+$cr1:#f00;$cr2:#de2220;$cr3:#b81a21;$cr4:#d93770;
 $cw1:#fff;
 $ch1:#000;$ch2:#333;$ch3:#666;$ch4:#999;$ch5:#ccc;$ch6:#eee;$ch7:#f5f5f5;
-$cb1:#37a6eb;$cb2:#3b64c2;
+$cb1:#37a6eb;$cb2:#3b64c2;$cb3:#4b85fb;
 $cg1:#55ca4c;$cg2:#c3e7b3;$cg3:#00ae99;$cg4:#4ce0ce;
 $cp1:#ae44ff;$cp2:#dcaeff;
 $co1:#f60;
@@ -17,6 +17,7 @@ $pop_width6:830px;$pop_height6:124px;
 .cg1 { color:#55ca4c;}
 .cr1 { color:#ff0000;}
 .cr2 { color:#de2220;}
+.cr4 { color:$cr4;}
 .ch1{color: #000;}
 .ch2{color: #333;}
 .ch3{color: #666;}
@@ -25,6 +26,7 @@ $pop_width6:830px;$pop_height6:124px;
 .ch6{color: #eee;}
 .ch7{color: #f0f0f0;}
 .cb1 { color:#37a6eb;}
+.cb3 { color:$cb3;}
 .co1 { color:#f60;}
 .lv1{ color:#0C0}
 

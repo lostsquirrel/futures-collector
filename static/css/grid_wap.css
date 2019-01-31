@@ -15,6 +15,10 @@
   color: #de2220;
 }
 
+.cr4 {
+  color: #d93770;
+}
+
 .ch1 {
   color: #000;
 }
@@ -45,6 +49,10 @@
 
 .cb1 {
   color: #37a6eb;
+}
+
+.cb3 {
+  color: #4b85fb;
 }
 
 .co1 {
@@ -1723,4 +1731,35 @@ body {
 .lose {
   font-weight: bold;
   color: #55ca4c;
+}
+
+.dkd_graphic {
+  height: 100%;
+  width: 60%;
+  float: left;
+}
+
+.dkd_per {
+  float: right;
+  width: 37%;
+  font-size: .9em;
+}
+
+.dkd_per span {
+  font-size: .7em;
+}
+
+.pt_head {
+  width: 100%;
+  text-align: center;
+}
+
+.pt_head span {
+  display: inline-block;
+  padding: 2px 10px 3px;
+  background-color: #fff;
+  font-size: .8em;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
