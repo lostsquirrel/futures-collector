@@ -4,6 +4,7 @@ $(function () {
     DataInSticks();
 });
 
+//var evaluationDataUrl = 'datas.json';
 var evaluationDataUrl = '/api/evaluation/data';
 
 var nSixMonth = GetNearMonth().reverse(); //建立近6个月的数组
@@ -118,7 +119,7 @@ function QureyWinRate(x) {
 	var pTotalm = 0;	   
 	var pRatem = 0;
     myGet(evaluationDataUrl, function(data){    	
-    	for (i=0;i<4;i++){   
+    	for (i=0;i<5;i++){   
     		pWinm = 0;
 	        pTotalm = 0;
     		$(data).each(function(k, v) {
@@ -149,7 +150,7 @@ function GetNearMonth(){
 	//获取月
 	var mon=data.getMonth()+2;
 	var arry=new Array();
-	for(var i=0;i<4;i++){
+	for(var i=0;i<5;i++){
 		mon=mon-1;
 		if(mon<=0){
 			year=year-1;
@@ -158,9 +159,9 @@ function GetNearMonth(){
 		if(mon<10){
 			mon="0"+mon;
 		}					
-		arry[i]=year+"-"+mon;		
-	}
-				
+		arry[i]=year+"-"+mon;
+	}				
+	console.log(arry);
 	return arry;
 }
 
